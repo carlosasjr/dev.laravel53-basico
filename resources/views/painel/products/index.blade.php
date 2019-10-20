@@ -13,9 +13,9 @@
         <span class="glyphicon glyphicon-plus"></span> Cadastrar
     </a>
 
-    {!! Form::open(['route' => 'produtos.search', 'class' => 'form form-inline form-search']) !!}
+    {!! Form::open([ 'class' => 'form form-inline form-search']) !!}
     {!! Form::text('search', null, ['placeholder' => 'Pesquisar?', 'class' => 'form-control', 'id' => 'search']) !!}
-    {!! Form::submit('search', ['class' => 'btn btn-success', 'id' => 'btnSearchProduct']) !!}
+    {!! Form::submit('Filtrar', ['class' => 'btn btn-success', 'id' => 'btnSearchProduct']) !!}
     {!! Form::close() !!}
 
     <section id="tabela">
