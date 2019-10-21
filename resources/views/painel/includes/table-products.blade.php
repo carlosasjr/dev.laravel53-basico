@@ -22,6 +22,10 @@
     @endforeach
 </table>
 
+@php
+
+@endphp
+
 @if( isset($dataForm) )
     {!! $products->appends($dataForm)->links() !!}
 @else

@@ -21,6 +21,14 @@ class CreateProductsTable extends Migration
             $table->string('image', 200)->nullable();
             $table->enum('category', ['eletronicos', 'moveis', 'limpeza', 'banho']);
             $table->text('description');
+
+            $table->unsignedInteger('user_id');
+            $table->boolean('featured', false);
+
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

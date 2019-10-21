@@ -28,8 +28,11 @@ $(document).on('click','#btnSearchProduct', function(e){
 
 
 function getProducts(page){
+    var search = $('#search').val();
+
     $.ajax({
-        url: '/painel/produtos?page=' + page
+        url: '/painel/produtos?page=' + page,
+        data : {'search': search}
     }).done(function(data){
         $('#tabela').html(data);
     });

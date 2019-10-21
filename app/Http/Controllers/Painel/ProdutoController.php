@@ -11,7 +11,7 @@ use View;
 class ProdutoController extends Controller
 {
     private $product;
-    private $totalPage = 2;
+    private $totalPage = 15;
 
 
     public function __construct(Product $product)
@@ -28,12 +28,19 @@ class ProdutoController extends Controller
     {
         $title = 'Listagem dos produtos';
 
-        $products = $this->product->paginate($this->totalPage);
-
         if ($request->ajax()) {
-            return View::make('painel.includes.table-products',['products' => $products])->render();
+            $dataForm = $request->except('_token');
+
+            if (!empty($dataForm['search']))
+            {
+                return $this->search($request);
+            }
+
+            $products = $this->product->paginate($this->totalPage);
+            return View::make('painel.includes.table-products',compact('products', 'title'))->render();
         }
 
+        $products = $this->product->paginate($this->totalPage);
         return view('painel.products.index', compact('products', 'title'));
     }
 
